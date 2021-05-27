@@ -1,0 +1,66 @@
+﻿<Page x:Class="Accounting.Pages.Main"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Accounting.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="419" d:DesignWidth="792"
+      Title="Main">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Menu>
+            <MenuItem Header="Главная" Template="{DynamicResource MainMenuItem}">
+                <MenuItem x:Name="updatePw" Header="Изменить пароль" Click="updatePw_Click"/>
+                
+                <Separator Background="SlateBlue" Margin="0,3,0,3"/>
+                
+                <MenuItem x:Name="back" Header="Выйти из профиля" Click="back_Click"/>
+                <MenuItem x:Name="quit" Header="Выйти из программы" Click="quit_Click"/>
+            </MenuItem>
+            
+            <MenuItem Header="Оборудование" Template="{DynamicResource MainMenuItem}">
+                <MenuItem x:Name="computers" Header="Компьютеры" Click="computers_Click"/>
+                <MenuItem x:Name="periphery" Header="Орг.техника" Click="periphery_Click"/>
+                
+                <Separator Background="SlateBlue" Margin="0,3,0,3"/>
+                
+                <MenuItem Header="Комплектующие" Template="{DynamicResource DropdownMenuItem}">
+                    <MenuItem x:Name="processors" Header="Процессоры" Click="processors_Click"/>
+                </MenuItem>
+                
+                <Separator Background="SlateBlue" Margin="0,3,0,3"/>
+                
+                <MenuItem x:Name="cabinets" Header="Расположение" Click="cabinets_Click"/>
+                
+                <Separator Background="SlateBlue" Margin="0,3,0,3"/>
+                
+                <MenuItem x:Name="brands" Header="Марки" Click="brands_Click"/>
+                <MenuItem x:Name="models" Header="Модели" Click="models_Click"/>
+                
+                <Separator Background="SlateBlue" Margin="0,3,0,3"/>
+                
+                <MenuItem Header="Операции" Template="{DynamicResource DropdownMenuItem}">
+                    <MenuItem x:Name="computersActions" Header="С компьютерами" Click="computersActions_Click"/>
+                    <MenuItem x:Name="peripheryActions" Header="С орг.техникой" Click="peripheryActions_Click"/>
+                </MenuItem>
+                
+                <Separator Background="SlateBlue" Margin="0,3,0,3"/>
+                
+                <MenuItem x:Name="types" Header="Типы" Click="types_Click"/>
+            </MenuItem>
+            
+            <MenuItem Header="Программное обеспечение" Template="{DynamicResource MainMenuItem}">
+                <MenuItem x:Name="software" Header="Существующее" Click="software_Click"/>
+                <MenuItem x:Name="versions" Header="Установленное" Click="versions_Click"/>
+            </MenuItem>
+        </Menu>
+        
+        <Frame x:Name="dataFrame" Grid.Row="1"/>
+    </Grid>
+</Page>
