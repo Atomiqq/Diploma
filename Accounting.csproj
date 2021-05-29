@@ -58,8 +58,35 @@
     <Compile Include="Pages\Brands.xaml.cs">
       <DependentUpon>Brands.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Cabinets.xaml.cs">
+      <DependentUpon>Cabinets.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Computers.xaml.cs">
+      <DependentUpon>Computers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Computers_Actions.xaml.cs">
+      <DependentUpon>Computers_Actions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Models.xaml.cs">
       <DependentUpon>Models.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Periphery.xaml.cs">
+      <DependentUpon>Periphery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Periphery_Actions.xaml.cs">
+      <DependentUpon>Periphery_Actions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Processors.xaml.cs">
+      <DependentUpon>Processors.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Software.xaml.cs">
+      <DependentUpon>Software.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Types.xaml.cs">
+      <DependentUpon>Types.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Versions.xaml.cs">
+      <DependentUpon>Versions.xaml</DependentUpon>
     </Compile>
     <Compile Include="Saved.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -89,6 +116,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Cabinets.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Computers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Computers_Actions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Main.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -97,7 +136,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Periphery.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Periphery_Actions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Processors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Reg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Software.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Types.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Versions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

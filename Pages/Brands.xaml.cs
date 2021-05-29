@@ -22,9 +22,14 @@ namespace Accounting.Pages
     /// </summary>
     public partial class Brands : Page
     {
+        DataTable dt;
+        string query = "SELECT * FROM Brands";
         public Brands()
         {
             InitializeComponent();
+
+            dt = App.Fill(query);
+            dg.ItemsSource = dt.DefaultView;
         }
 
         private void add_Click(object sender, RoutedEventArgs e)
@@ -39,6 +44,7 @@ namespace Accounting.Pages
 
         private void delete_Click(object sender, RoutedEventArgs e)
         {
+            App.Delete(dg, query, dt);
         }
     }
 }

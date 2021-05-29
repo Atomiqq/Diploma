@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Data.SqlClient;
 using System.Windows.Navigation;
+using System.Windows.Controls;
 
 namespace Accounting
 {
@@ -117,15 +118,54 @@ namespace Accounting
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
-                finally
+            }
+        }
+
+        public static void Update(string query, DataTable dt)
+        {
+            using (SqlConnection connection = new SqlConnection(App.Conn))
+            {
+                try
                 {
-                    connection.Close();
+                    connection.Open();
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+                    {
+                        SqlCommandBuilder commandBuilder = new SqlCommandBuilder(adapter);
+                        adapter.InsertCommand = new SqlCommand("AddBrand", connection);
+                        adapter.InsertCommand.CommandType = CommandType.StoredProcedure;
+                        adapter.InsertCommand.Parameters.Add(new SqlParameter("@name", SqlDbType.NVarChar, 30, "Name"));
+
+                        SqlParameter parameter = adapter.InsertCommand.Parameters.Add("@Id", SqlDbType.Int, 0, "Id");
+                        parameter.Direction = ParameterDirection.Output;
+
+                        adapter.Update(dt);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
                 }
             }
         }
 
+        public static void Delete(DataGrid dg, string query, DataTable dt)
+        {
+            if (dg.SelectedItem != null)
+            {
+                DataRowView datarowView = dg.SelectedItem as DataRowView;
+                if (datarowView != null)
+                {
+                    DataRow dataRow = (DataRow)datarowView.Row;
+                    dataRow.Delete();
+                }
+            }
 
-        public static DataTable Fill(string query, out SqlDataAdapter adapter)
+            Update(query, dt);
+        }
+
+        public static DataTable Fill(string query)
         {
             using (SqlConnection connection = new SqlConnection(Conn))
             {
@@ -135,7 +175,7 @@ namespace Accounting
 
                     SqlCommand command = new SqlCommand(query, connection);
 
-                    using (adapter = new SqlDataAdapter(command))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
@@ -145,12 +185,7 @@ namespace Accounting
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                    adapter = null;
                     return null;
-                }
-                finally
-                {
-                    connection.Close();
                 }
             }
         }

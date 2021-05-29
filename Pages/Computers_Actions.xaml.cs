@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,14 +17,14 @@ using System.Windows.Shapes;
 namespace Accounting.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Models.xaml
+    /// Логика взаимодействия для Computers_Action.xaml
     /// </summary>
-    public partial class Models : Page
+    public partial class Computers_Actions : Page
     {
         DataTable dt;
-        string query = "SELECT * FROM ModelsView";
+        string query = "SELECT * FROM Computers_ActionsView";
 
-        public Models()
+        public Computers_Actions()
         {
             InitializeComponent();
 

@@ -10,14 +10,14 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition/>
-            <ColumnDefinition Width="350"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
             <RowDefinition/>
-            <RowDefinition Height="250"/>
-            <RowDefinition/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <Rectangle Width="55" Height="150" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Opacity="0.5" RadiusX="27.5" RadiusY="27.5"/>
@@ -28,9 +28,9 @@
 
         <DataGrid x:Name="dg" Grid.Row="1" Grid.Column="1">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="№" Binding="{Binding Id}" Width="Auto"/>
-                <DataGridTextColumn Header="Марка" Binding="{Binding Brand_Id}" Width="*"/>
-                <DataGridTextColumn Header="Модель" Binding="{Binding Models.Name}" Width="*"/>
+                <DataGridTextColumn Header="№" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Марка" Binding="{Binding Brand_Name}"/>
+                <DataGridTextColumn Header="Модель" Binding="{Binding Name}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
