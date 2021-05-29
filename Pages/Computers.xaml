@@ -29,13 +29,11 @@
         <DataGrid x:Name="dg" Grid.Row="1" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Марка процессора" Binding="{Binding ProcessorBrand_Name}"/>
-                <DataGridTextColumn Header="Модель процессора" Binding="{Binding ProcessorModel_Name}"/>
-                <DataGridTextColumn Header="Марка монитора" Binding="{Binding MonitorBrand_Name}"/>
-                <DataGridTextColumn Header="Модель монитора" Binding="{Binding MonitorModel_Name}"/>
+                <DataGridTextColumn Header="Марка процессора" Binding="{Binding Processor_Name}"/>
+                <DataGridTextColumn Header="Марка монитора" Binding="{Binding Monitor_Name}"/>
                 <DataGridTextColumn Header="Оперативная память" Binding="{Binding RAM}"/>
                 <DataGridTextColumn Header="Физическая память" Binding="{Binding ROM}"/>
-                <DataGridCheckBoxColumn Header="Работоспособность" Binding="{Binding Is_Working}"/>
+                <DataGridTextColumn Header="Работоспособность" Binding="{Binding Is_Working}"/>
                 <DataGridTextColumn Header="Расположение" Binding="{Binding Cabinet_Name}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>

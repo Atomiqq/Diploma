@@ -30,9 +30,8 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Тип" Binding="{Binding Type_Name}"/>
-                <DataGridTextColumn Header="Марка" Binding="{Binding Brand_Name}"/>
-                <DataGridTextColumn Header="Модель" Binding="{Binding Model_Name}"/>
-                <DataGridCheckBoxColumn Header="Работоспособность" Binding="{Binding Is_Working}"/>
+                <DataGridTextColumn Header="Оргтехника" Binding="{Binding Periphery_Name}"/>
+                <DataGridTextColumn Header="Работоспособность" Binding="{Binding Is_Working}"/>
                 <DataGridTextColumn Header="Расположение" Binding="{Binding Cabinet_Name}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>

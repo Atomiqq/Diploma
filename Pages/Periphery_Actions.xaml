@@ -29,9 +29,8 @@
         <DataGrid x:Name="dg" Grid.Row="1" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Тип" Binding="{Binding Type}"/>
-                <DataGridTextColumn Header="Марка оргтехники" Binding="{Binding Brand_Name}"/>
-                <DataGridTextColumn Header="Модель оргтехники" Binding="{Binding Model_Name}"/>
+                <DataGridTextColumn Header="Тип" Binding="{Binding Type_Name}"/>
+                <DataGridTextColumn Header="Оргтехника" Binding="{Binding Periphery_Name}"/>
                 <DataGridTextColumn Header="Дата операции" Binding="{Binding Date}"/>
                 <DataGridTextColumn Header="Описание" Binding="{Binding Note}" Width="*"/>
             </DataGrid.Columns>

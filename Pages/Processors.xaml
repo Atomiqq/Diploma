@@ -29,8 +29,7 @@
         <DataGrid x:Name="dg" Grid.Row="1" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Марка" Binding="{Binding Brand_Name}"/>
-                <DataGridTextColumn Header="Модель" Binding="{Binding Model_Name}"/>
+                <DataGridTextColumn Header="Процессор" Binding="{Binding Processor_Name}"/>
                 <DataGridTextColumn Header="Количество ядер" Binding="{Binding Cores}"/>
                 <DataGridTextColumn Header="Частота на ядро" Binding="{Binding Frequency}" Width="*"/>
             </DataGrid.Columns>
