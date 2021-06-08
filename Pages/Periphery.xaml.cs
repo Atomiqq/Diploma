@@ -22,13 +22,14 @@ namespace Accounting.Pages
     public partial class Periphery : Page
     {
         DataTable dt;
-        string query = "SELECT * FROM PeripheryView";
 
         public Periphery()
         {
             InitializeComponent();
 
-            dt = App.Fill(query);
+            App.Table = "Periphery";
+
+            dt = App.Fill();
             dg.ItemsSource = dt.DefaultView;
         }
 
@@ -44,7 +45,7 @@ namespace Accounting.Pages
 
         private void delete_Click(object sender, RoutedEventArgs e)
         {
-            App.Delete(dg, query, dt);
+            App.Delete(dg, dt);
         }
     }
 }

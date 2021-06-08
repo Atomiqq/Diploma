@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -55,6 +56,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\AttrOne.xaml.cs">
+      <DependentUpon>AttrOne.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AttrThree.xaml.cs">
+      <DependentUpon>AttrThree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AttrTwoWithCb.xaml.cs">
+      <DependentUpon>AttrTwoWithCb.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Brands.xaml.cs">
       <DependentUpon>Brands.xaml</DependentUpon>
     </Compile>
@@ -108,6 +118,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AttrOne.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AttrThree.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AttrTwoWithCb.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Auth.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

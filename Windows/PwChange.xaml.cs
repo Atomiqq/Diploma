@@ -1,18 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Accounting.Windows
 {
@@ -44,10 +32,10 @@ namespace Accounting.Windows
 
                         using (SqlCommand command = connection.CreateCommand())
                         {
-                            command.CommandText = "EXEC PwChange @login, @pwNew, @pwOld";
+                            command.CommandText = "EXEC PwChange @login, @pwOld, @pwNew";
                             command.Parameters.AddWithValue("@login", App.Login);
-                            command.Parameters.AddWithValue("@pwNew", pwNew.Password);
                             command.Parameters.AddWithValue("@pwOld", pwOld.Password);
+                            command.Parameters.AddWithValue("@pwNew", pwNew.Password);
                             command.ExecuteNonQuery();
                         }
 
@@ -55,16 +43,12 @@ namespace Accounting.Windows
 
                         Close();
 
-                        ((MainWindow)Application.Current.MainWindow).mainFrame.GoBack();
+                        ((MainWindow)Application.Current.MainWindow).mainFrame.Navigate(new Uri(@"Pages\Auth.xaml", UriKind.RelativeOrAbsolute));
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
-                    }
-                    finally
-                    {
-                        connection.Close();
                     }
                 }
             }
@@ -77,14 +61,9 @@ namespace Accounting.Windows
 
         private void refresh_Click(object sender, RoutedEventArgs e)
         {
-            foreach (FrameworkElement el in pwChGrid.Children)
-            {
-                if (el is PasswordBox)
-                {
-                    PasswordBox elem = (PasswordBox) el;
-                    elem.Password = null;
-                }
-            }
+            pwNew.Clear();
+            pwOld.Clear();
+            pwRepeat.Clear();
         }
     }
 }

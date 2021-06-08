@@ -22,13 +22,14 @@ namespace Accounting.Pages
     public partial class Computers_Actions : Page
     {
         DataTable dt;
-        string query = "SELECT * FROM Computers_ActionsView";
 
         public Computers_Actions()
         {
             InitializeComponent();
 
-            dt = App.Fill(query);
+            App.Table = "Computers_Actions";
+
+            dt = App.Fill();
             dg.ItemsSource = dt.DefaultView;
         }
 
@@ -44,7 +45,7 @@ namespace Accounting.Pages
 
         private void delete_Click(object sender, RoutedEventArgs e)
         {
-            App.Delete(dg, query, dt);
+            App.Delete(dg, dt);
         }
     }
 }
