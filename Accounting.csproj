@@ -56,8 +56,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\AttrFive.xaml.cs">
+      <DependentUpon>AttrFive.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AttrFour.xaml.cs">
+      <DependentUpon>AttrFour.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AttrOne.xaml.cs">
       <DependentUpon>AttrOne.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AttrSeven.xaml.cs">
+      <DependentUpon>AttrSeven.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AttrThree.xaml.cs">
       <DependentUpon>AttrThree.xaml</DependentUpon>
@@ -121,7 +130,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AttrFive.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AttrFour.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AttrOne.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AttrSeven.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

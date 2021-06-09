@@ -298,7 +298,7 @@ namespace Accounting
         }
 
         /// <summary>
-        /// Метод добавления и изменения записи в таблицах с двумя изменяемыми атрибутами
+        /// Метод добавления или изменения записи в таблицах с двумя изменяемыми атрибутами
         /// </summary>
         /// <param name="attrOne"></param>
         /// <param name="attrTwo"></param>
@@ -372,7 +372,7 @@ namespace Accounting
         }
 
         /// <summary>
-        /// Метод добаления и изменения записи в таблицах с тремя изменемыми атрибутами
+        /// Метод добавления или изменения записи в таблицах с тремя изменяемыми атрибутами
         /// </summary>
         /// <param name="attrOne"></param>
         /// <param name="attrTwo"></param>
@@ -453,10 +453,197 @@ namespace Accounting
             return true;
         }
 
-       /// <summary>
-       /// Метод, возвращающий заполненный DataTable с таблицей
-       /// </summary>
-       /// <returns></returns>
+        /// <summary>
+        /// Метод добавления или изменения записи в таблицах с четырьмя или пятью изменяемыми атрибутами 
+        /// </summary>
+        /// <param name="attrOne"></param>
+        /// <param name="attrTwo"></param>
+        /// <param name="attrThree"></param>
+        /// <param name="attrFour"></param>
+        /// <param name="nav"></param>
+        /// <returns></returns>
+        public static bool AddOrEdit(string attrOne, string attrTwo, string attrThree, string attrFour, string attrFive, NavigationService nav)
+        {
+            if (!string.IsNullOrWhiteSpace(attrOne) && !string.IsNullOrWhiteSpace(attrTwo) && !string.IsNullOrWhiteSpace(attrThree))
+            {
+                using (SqlConnection connection = new SqlConnection(Conn))
+                {
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlCommand command = connection.CreateCommand())
+                        {
+                            if (Table.StartsWith("add"))
+                            {
+                                if (Table.EndsWith("Periphery"))
+                                {
+                                    command.CommandText = "AddPeriphery";
+                                    command.Parameters.AddWithValue("@id", attrOne);
+                                    command.Parameters.AddWithValue("@type", attrTwo);
+                                    command.Parameters.AddWithValue("@model", attrThree);
+                                    command.Parameters.AddWithValue("@is_working", attrFour);
+                                    command.Parameters.AddWithValue("@cabinet", attrFive);
+                                }
+                                if (Table.EndsWith("Computers_Actions"))
+                                {
+                                    command.CommandText = "AddComputer_Action";
+                                    command.Parameters.AddWithValue("@type", attrOne);
+                                    command.Parameters.AddWithValue("@computer_id", attrTwo);
+                                    command.Parameters.AddWithValue("@date", attrThree);
+                                    command.Parameters.AddWithValue("@note", attrFour);
+                                }
+                                if (Table.EndsWith("Periphery_Actions"))
+                                {
+                                    command.CommandText = "AddPeriphery_Action";
+                                    command.Parameters.AddWithValue("@type", attrOne);
+                                    command.Parameters.AddWithValue("@periphery_id", attrTwo);
+                                    command.Parameters.AddWithValue("@date", attrThree);
+                                    command.Parameters.AddWithValue("@note", attrFour);
+                                }
+                            }
+                            if (Table.StartsWith("edit"))
+                            {
+                                if (Table.EndsWith("Periphery"))
+                                {
+                                    command.CommandText = "EditPeriphery";
+                                    command.Parameters.AddWithValue("@id", attrOne);
+                                    command.Parameters.AddWithValue("@type", attrTwo);
+                                    command.Parameters.AddWithValue("@model", attrThree);
+                                    command.Parameters.AddWithValue("@is_working", attrFour);
+                                    command.Parameters.AddWithValue("@cabinet", attrFive);
+                                }
+                                if (Table.EndsWith("Computers_Actions"))
+                                {
+                                    command.CommandText = "EditComputer_Action";
+                                    command.Parameters.AddWithValue("@type", attrOne);
+                                    command.Parameters.AddWithValue("@computer_id", attrTwo);
+                                    command.Parameters.AddWithValue("@date", attrThree);
+                                    command.Parameters.AddWithValue("@note", attrFour);
+                                }
+                                if (Table.EndsWith("Periphery_Actions"))
+                                {
+                                    command.CommandText = "AddPeriphery_Action";
+                                    command.Parameters.AddWithValue("@type", attrOne);
+                                    command.Parameters.AddWithValue("@periphery_id", attrTwo);
+                                    command.Parameters.AddWithValue("@date", attrThree);
+                                    command.Parameters.AddWithValue("@note", attrFour);
+                                }
+                                command.Parameters.AddWithValue("@id", Id);
+                            }
+
+                            command.CommandType = CommandType.StoredProcedure;
+
+                            if (command.ExecuteNonQuery() == -1)
+                            {
+                                MessageBox.Show("Введенная запись уже существует!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                                return false;
+                            }
+                        }
+
+                        if (Table.EndsWith("Periphery")) nav.Navigate(new Uri($@"Pages\Periphery.xaml", UriKind.RelativeOrAbsolute));
+                        if (Table.EndsWith("Computers_Actions")) nav.Navigate(new Uri($@"Pages\Computers_Actions.xaml", UriKind.RelativeOrAbsolute));
+                        if (Table.EndsWith("Periphery_Actions")) nav.Navigate(new Uri($@"Pages\Periphery_Actions.xaml", UriKind.RelativeOrAbsolute));
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Название не может быть пустым или содержать только пробелы!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Метод добавления или изменения записи в таблицах с семью изменяемыми атрибутами
+        /// </summary>
+        /// <param name="attrOne"></param>
+        /// <param name="attrTwo"></param>
+        /// <param name="attrThree"></param>
+        /// <param name="attrFour"></param>
+        /// <param name="attrFive"></param>
+        /// <param name="attrSix"></param>
+        /// <param name="attrSeven"></param>
+        /// <param name="nav"></param>
+        /// <returns></returns>
+        public static bool AddOrEdit(string attrOne, string attrTwo, string attrThree, string attrFour, string attrFive, string attrSix, string attrSeven, NavigationService nav)
+        {
+            if (!string.IsNullOrWhiteSpace(attrOne) && !string.IsNullOrWhiteSpace(attrTwo) && !string.IsNullOrWhiteSpace(attrThree))
+            {
+                using (SqlConnection connection = new SqlConnection(Conn))
+                {
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlCommand command = connection.CreateCommand())
+                        {
+                            if (Table.StartsWith("add"))
+                            {
+                                if (Table.EndsWith("Computers"))
+                                {
+                                    command.CommandText = "AddComputer";
+                                    command.Parameters.AddWithValue("@id", attrOne);
+                                    command.Parameters.AddWithValue("@processor", attrTwo);
+                                    command.Parameters.AddWithValue("@monitor_id", attrThree);
+                                    command.Parameters.AddWithValue("@ram", attrFour);
+                                    command.Parameters.AddWithValue("@rom", attrFive);
+                                    command.Parameters.AddWithValue("@is_working", attrFour);
+                                    command.Parameters.AddWithValue("@cabinet", attrFive);
+                                }
+                            }
+                            if (Table.StartsWith("edit"))
+                            {
+                                if (Table.EndsWith("Computers"))
+                                {
+                                    command.CommandText = "EditComputer";
+                                    command.Parameters.AddWithValue("@id", attrOne);
+                                    command.Parameters.AddWithValue("@processor", attrTwo);
+                                    command.Parameters.AddWithValue("@monitor_id", attrThree);
+                                    command.Parameters.AddWithValue("@ram", attrFour);
+                                    command.Parameters.AddWithValue("@rom", attrFive);
+                                    command.Parameters.AddWithValue("@is_working", attrFour);
+                                    command.Parameters.AddWithValue("@cabinet", attrFive);
+                                }
+                                command.Parameters.AddWithValue("@id", Id);
+                            }
+
+                            command.CommandType = CommandType.StoredProcedure;
+
+                            if (command.ExecuteNonQuery() == -1)
+                            {
+                                MessageBox.Show("Введенная запись уже существует!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                                return false;
+                            }
+                        }
+
+                        if (Table.EndsWith("Computers")) nav.Navigate(new Uri($@"Pages\Computers.xaml", UriKind.RelativeOrAbsolute));
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Название не может быть пустым или содержать только пробелы!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Метод, возвращающий заполненный DataTable с таблицей
+        /// </summary>
+        /// <returns></returns>
         public static DataTable Fill()
         {
             using (SqlConnection connection = new SqlConnection(Conn))
