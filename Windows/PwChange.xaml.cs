@@ -14,6 +14,11 @@ namespace Accounting.Windows
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Метод изменения пароля по нажатию кнопки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void changePw_Click(object sender, RoutedEventArgs e)
         {
             if (App.CheckPasswordComplexity(pwNew.Password) == false) return;
@@ -59,6 +64,11 @@ namespace Accounting.Windows
             }
         }
 
+        /// <summary>
+        /// Метод обновления страницы по нажатию кнопки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void refresh_Click(object sender, RoutedEventArgs e)
         {
             pwNew.Clear();

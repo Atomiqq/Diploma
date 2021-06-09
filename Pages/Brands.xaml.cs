@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Accounting.Pages
 {
@@ -33,6 +22,11 @@ namespace Accounting.Pages
             dg.ItemsSource = dt.DefaultView;
         }
 
+        /// <summary>
+        /// Метод перехода на страницу добавления записи
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void add_Click(object sender, RoutedEventArgs e)
         {
             App.Table = "addBrands";
@@ -40,6 +34,11 @@ namespace Accounting.Pages
             NavigationService.Navigate(new Uri(@"Pages\AttrOne.xaml", UriKind.RelativeOrAbsolute));
         }
 
+        /// <summary>
+        /// Метод перехода на страницу изменения записи
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void edit_Click(object sender, RoutedEventArgs e)
         {
             if (dg.SelectedItem != null)
@@ -52,6 +51,11 @@ namespace Accounting.Pages
             }
         }
 
+        /// <summary>
+        /// Метод удаления выделенной записи
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void delete_Click(object sender, RoutedEventArgs e)
         {
             App.Delete(dg, dt);

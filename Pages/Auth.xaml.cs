@@ -18,16 +18,31 @@ namespace Accounting.Pages
             serv.Text = Saved.Default.Server;
         }
 
+        /// <summary>
+        /// Метод перехода на страницу регистрации по нажатию кнопки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void reg_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri(@"Pages\Reg.xaml", UriKind.RelativeOrAbsolute));
         }
 
+        /// <summary>
+        /// Метод обновления страницы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void refresh_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Refresh();
         }
 
+        /// <summary>
+        /// Метод перехода на главную страницу по нажатию кнопки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void auth_Click(object sender, RoutedEventArgs e)
         {
             App.Conn = $@"Data Source={serv.Text};Initial Catalog=Accounting;Integrated Security=False;User Id={login.Text};Password={pw.Password}";

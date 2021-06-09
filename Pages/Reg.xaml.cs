@@ -16,16 +16,31 @@ namespace Accounting.Pages
             serv.Text = Saved.Default.Server;
         }
 
+        /// <summary>
+        /// Метод возврата на страницу авторизации по нажатию кнопки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void back_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
 
+        /// <summary>
+        /// Метод обновления страницы по нажатию кнопки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void refresh_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Refresh();
         }
 
+        /// <summary>
+        /// Метод регистрации пользователя по нажатию кнопки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void reg_Click(object sender, RoutedEventArgs e)
         {
             App.Conn = $@"Data Source={serv.Text};Initial Catalog=Accounting;Integrated Security=True";
