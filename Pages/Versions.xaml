@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
 
         <Rectangle Width="55" Height="150" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Opacity="0.5" RadiusX="27.5" RadiusY="27.5" Grid.ColumnSpan="2"/>
-
+        
         <Button x:Name="add" Content="+" Width="35" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,90" Click="add_Click"/>
         <Button x:Name="edit" Content="Δ" Width="35" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" Click="edit_Click"/>
         <Button x:Name="delete" Content="–" Width="35" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,90,0,0" Click="delete_Click"/>

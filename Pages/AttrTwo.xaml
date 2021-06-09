@@ -25,7 +25,7 @@
         <Rectangle Width="55" Height="105" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Opacity="0.5" RadiusX="26.5" RadiusY="26.5" Grid.RowSpan="3"/>
 
         <Label Content="Название:" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15,10,0,0"/>
-        <Label x:Name="lblTwo" Content="Тип:" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15,35,0,0"/>
+        <Label x:Name="lbl" Content="Тип:" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15,35,0,0"/>
 
         <TextBox x:Name="attrOne" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="105,15,20,0"/>
         <ComboBox x:Name="attrTwo" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="105,40,20,0"/>

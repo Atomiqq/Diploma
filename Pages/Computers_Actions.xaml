@@ -31,7 +31,7 @@
                 <DataGridTextColumn Header="№" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Тип" Binding="{Binding Type_Name}"/>
                 <DataGridTextColumn Header="Компьютер" Binding="{Binding Computer_Id}"/>
-                <DataGridTextColumn Header="Дата операции" Binding="{Binding Date}"/>
+                <DataGridTextColumn Header="Дата операции" Binding="{Binding Date, StringFormat=dd.MM.yyyy}"/>
                 <DataGridTextColumn Header="Описание" Binding="{Binding Note}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>

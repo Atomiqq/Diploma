@@ -10,13 +10,13 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="180"/>
             <ColumnDefinition/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="180"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="200"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -24,13 +24,17 @@
         <Rectangle Grid.Row="1" Grid.Column="1" Margin="10,10,10,55" RadiusX="17.5" RadiusY="17.5"/>
         <Rectangle Width="55" Height="105" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Opacity="0.5" RadiusX="26.5" RadiusY="26.5" Grid.RowSpan="3"/>
 
-        <Label Content="Компьютер:" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15,10,0,0"/>
-        <Label Content="ПО:" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15,35,0,0"/>
-        <Label Content="Версия:" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15,60,0,0"/>
+        <Label Content="Оргтехника:" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15,10,0,0"/>
+        <Label Content="Тип:" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15,35,0,0"/>
+        <Label Content="Модель:" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15,60,0,0"/>
+        <Label Content="Работоспособность:" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15,85,0,0"/>
+        <Label Content="Расположение:" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15,110,0,0"/>
 
-        <ComboBox x:Name="attrOne" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="125,15,20,0"/>
-        <ComboBox x:Name="attrTwo" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="125,40,20,0"/>
-        <TextBox x:Name="attrThree" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="125,65,20,0"/>
+        <TextBox x:Name="attrOne" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="195,15,20,0"/>
+        <ComboBox x:Name="attrTwo" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="195,40,20,0"/>
+        <ComboBox x:Name="attrThree" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="195,65,20,0"/>
+        <ComboBox x:Name="attrFour" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="195,90,20,0"/>
+        <ComboBox x:Name="attrFive" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="195,115,20,0"/>
 
         <Button x:Name="addOrEdit" Content="Добавить" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Margin="10,0,10,10" Click="addOrEdit_Click"/>
         <Button x:Name="refresh" Content="↻" Width="35" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,45" Click="refresh_Click"/>

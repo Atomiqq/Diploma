@@ -29,7 +29,7 @@ namespace Accounting.Pages
             if (App.Table.EndsWith("Models"))
             {
                 attrTwo.Items.Clear();
-                lblTwo.Content = "Бренд:";
+                lbl.Content = "Бренд:";
 
                 using (SqlConnection connection = new SqlConnection(App.Conn))
                 {

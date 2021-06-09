@@ -507,7 +507,7 @@ namespace Accounting
                                 if (Table.EndsWith("Periphery"))
                                 {
                                     command.CommandText = "EditPeriphery";
-                                    command.Parameters.AddWithValue("@id", attrOne);
+                                    command.Parameters.AddWithValue("@newId", attrOne);
                                     command.Parameters.AddWithValue("@type", attrTwo);
                                     command.Parameters.AddWithValue("@model", attrThree);
                                     command.Parameters.AddWithValue("@is_working", attrFour);
@@ -574,7 +574,7 @@ namespace Accounting
         /// <returns></returns>
         public static bool AddOrEdit(string attrOne, string attrTwo, string attrThree, string attrFour, string attrFive, string attrSix, string attrSeven, NavigationService nav)
         {
-            if (!string.IsNullOrWhiteSpace(attrOne) && !string.IsNullOrWhiteSpace(attrTwo) && !string.IsNullOrWhiteSpace(attrThree))
+            if (!string.IsNullOrWhiteSpace(attrOne) && !string.IsNullOrWhiteSpace(attrSix) && !string.IsNullOrWhiteSpace(attrSeven))
             {
                 using (SqlConnection connection = new SqlConnection(Conn))
                 {
@@ -590,12 +590,12 @@ namespace Accounting
                                 {
                                     command.CommandText = "AddComputer";
                                     command.Parameters.AddWithValue("@id", attrOne);
-                                    command.Parameters.AddWithValue("@processor", attrTwo);
-                                    command.Parameters.AddWithValue("@monitor_id", attrThree);
+                                    command.Parameters.AddWithValue("@monitor_id", attrTwo);
+                                    command.Parameters.AddWithValue("@processor", attrThree);
                                     command.Parameters.AddWithValue("@ram", attrFour);
                                     command.Parameters.AddWithValue("@rom", attrFive);
-                                    command.Parameters.AddWithValue("@is_working", attrFour);
-                                    command.Parameters.AddWithValue("@cabinet", attrFive);
+                                    command.Parameters.AddWithValue("@is_working", attrSix);
+                                    command.Parameters.AddWithValue("@cabinet", attrSeven);
                                 }
                             }
                             if (Table.StartsWith("edit"))
@@ -603,13 +603,13 @@ namespace Accounting
                                 if (Table.EndsWith("Computers"))
                                 {
                                     command.CommandText = "EditComputer";
-                                    command.Parameters.AddWithValue("@id", attrOne);
-                                    command.Parameters.AddWithValue("@processor", attrTwo);
-                                    command.Parameters.AddWithValue("@monitor_id", attrThree);
+                                    command.Parameters.AddWithValue("@newId", attrOne);
+                                    command.Parameters.AddWithValue("@monitor_id", attrTwo);
+                                    command.Parameters.AddWithValue("@processor", attrThree);
                                     command.Parameters.AddWithValue("@ram", attrFour);
                                     command.Parameters.AddWithValue("@rom", attrFive);
-                                    command.Parameters.AddWithValue("@is_working", attrFour);
-                                    command.Parameters.AddWithValue("@cabinet", attrFive);
+                                    command.Parameters.AddWithValue("@is_working", attrSix);
+                                    command.Parameters.AddWithValue("@cabinet", attrSeven);
                                 }
                                 command.Parameters.AddWithValue("@id", Id);
                             }
