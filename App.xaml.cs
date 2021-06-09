@@ -184,16 +184,16 @@ namespace Accounting
                     using (SqlCommand command = connection.CreateCommand())
                     {
                         if (Table.EndsWith("Brands")) command.CommandText = "SELECT * FROM Brands";
-                        else if (Table.EndsWith("Cabinets")) command.CommandText = "SELECT * FROM Cabinets";
-                        else if (Table.EndsWith("Computers")) command.CommandText = "SELECT * FROM ComputersView";
-                        else if (Table.EndsWith("Computers_Actions")) command.CommandText = "SELECT * FROM Computers_ActionsView";
-                        else if (Table.EndsWith("Models")) command.CommandText = "SELECT * FROM ModelsView";
-                        else if (Table.EndsWith("Periphery")) command.CommandText = "SELECT * FROM PeripheryView";
-                        else if (Table.EndsWith("Periphery_Actions")) command.CommandText = "SELECT * FROM Periphery_ActionsView";
-                        else if (Table.EndsWith("Processors")) command.CommandText = "SELECT * FROM ProcessorsView";
-                        else if (Table.EndsWith("Software")) command.CommandText = "SELECT * FROM Software";
-                        else if (Table.EndsWith("Types")) command.CommandText = "SELECT * FROM Types";
-                        else if (Table.EndsWith("Versions")) command.CommandText = "SELECT * FROM VersionsView";
+                        if (Table.EndsWith("Cabinets")) command.CommandText = "SELECT * FROM Cabinets";
+                        if (Table.EndsWith("Computers")) command.CommandText = "SELECT * FROM ComputersView";
+                        if (Table.EndsWith("Computers_Actions")) command.CommandText = "SELECT * FROM Computers_ActionsView";
+                        if (Table.EndsWith("Models")) command.CommandText = "SELECT * FROM ModelsView";
+                        if (Table.EndsWith("Periphery")) command.CommandText = "SELECT * FROM PeripheryView";
+                        if (Table.EndsWith("Periphery_Actions")) command.CommandText = "SELECT * FROM Periphery_ActionsView";
+                        if (Table.EndsWith("Processors")) command.CommandText = "SELECT * FROM ProcessorsView";
+                        if (Table.EndsWith("Software")) command.CommandText = "SELECT * FROM Software";
+                        if (Table.EndsWith("Types")) command.CommandText = "SELECT * FROM Types";
+                        if (Table.EndsWith("Versions")) command.CommandText = "SELECT * FROM VersionsView";
 
                         using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                         {
@@ -201,25 +201,25 @@ namespace Accounting
 
                             if (Table.EndsWith("Brands"))
                                 adapter.DeleteCommand = new SqlCommand("DeleteBrand", connection);
-                            else if (Table.EndsWith("Cabinets"))
+                            if (Table.EndsWith("Cabinets"))
                                 adapter.DeleteCommand = new SqlCommand("DeleteCabinet", connection);
-                            else if (Table.EndsWith("Computers"))
+                            if (Table.EndsWith("Computers"))
                                 adapter.DeleteCommand = new SqlCommand("DeleteComputer", connection);
-                            else if (Table.EndsWith("Computers_Actions"))
+                            if (Table.EndsWith("Computers_Actions"))
                                 adapter.DeleteCommand = new SqlCommand("DeleteComputer_Action", connection);
-                            else if (Table.EndsWith("Models"))
+                            if (Table.EndsWith("Models"))
                                 adapter.DeleteCommand = new SqlCommand("DeleteModel", connection);
-                            else if (Table.EndsWith("Periphery"))
+                            if (Table.EndsWith("Periphery"))
                                 adapter.DeleteCommand = new SqlCommand("DeletePeriphery", connection);
-                            else if (Table.EndsWith("Periphery_Actions"))
+                            if (Table.EndsWith("Periphery_Actions"))
                                 adapter.DeleteCommand = new SqlCommand("DeletePeriphery_Action", connection);
-                            else if (Table.EndsWith("Processors"))
+                            if (Table.EndsWith("Processors"))
                                 adapter.DeleteCommand = new SqlCommand("DeleteProcessor", connection);
-                            else if (Table.EndsWith("Software"))
+                            if (Table.EndsWith("Software"))
                                 adapter.DeleteCommand = new SqlCommand("DeleteSoftware", connection);
-                            else if (Table.EndsWith("Types"))
+                            if (Table.EndsWith("Types"))
                                 adapter.DeleteCommand = new SqlCommand("DeleteType", connection);
-                            else if (Table.EndsWith("Versions"))
+                            if (Table.EndsWith("Versions"))
                                 adapter.DeleteCommand = new SqlCommand("DeleteVersion", connection);
 
                             adapter.DeleteCommand.CommandType = CommandType.StoredProcedure;
@@ -242,7 +242,7 @@ namespace Accounting
         /// </summary>
         /// <param name="attr"></param>
         /// <param name="nav"></param>
-        public static void AddOrEdit(string attr, NavigationService nav)
+        public static bool AddOrEdit(string attr, NavigationService nav)
         {
             if (!string.IsNullOrWhiteSpace(attr))
             {
@@ -260,7 +260,7 @@ namespace Accounting
                                 if (Table.EndsWith("Cabinets")) command.CommandText = "AddCabinet";
                                 if (Table.EndsWith("Software")) command.CommandText = "AddSoftware";
                             }
-                            else if (Table.StartsWith("edit"))
+                            if (Table.StartsWith("edit"))
                             {
                                 if (Table.EndsWith("Brands")) command.CommandText = "EditBrand";
                                 if (Table.EndsWith("Cabinets")) command.CommandText = "EditCabinet";
@@ -274,35 +274,27 @@ namespace Accounting
                             if (command.ExecuteNonQuery() == -1)
                             {
                                 MessageBox.Show("Введенная запись уже существует!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                                return;
-                            }
-                            if (Table.StartsWith("add") && command.ExecuteNonQuery() != -1)
-                            {
-                                MessageBox.Show($"Запись {attr} успешно добавлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                            }
-                            if (Table.StartsWith("edit") && command.ExecuteNonQuery() != -1)
-                            {
-                                MessageBox.Show($"Запись №{Id} успешно изменена на {attr}!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                                return false;
                             }
                         }
 
-                        Table = Table.Replace("add", "");
-                        Table = Table.Replace("edit", "");
-
-                        nav.Navigate(new Uri($@"Pages\{Table}.xaml", UriKind.RelativeOrAbsolute));
+                        if (Table.EndsWith("Brands")) nav.Navigate(new Uri($@"Pages\Brands.xaml", UriKind.RelativeOrAbsolute));
+                        if (Table.EndsWith("Cabinets")) nav.Navigate(new Uri($@"Pages\Cabinets.xaml", UriKind.RelativeOrAbsolute));
+                        if (Table.EndsWith("Software")) nav.Navigate(new Uri($@"Pages\Software.xaml", UriKind.RelativeOrAbsolute));
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                        return;
+                        return false;
                     }
                 }
             }
             else
             {
                 MessageBox.Show("Название не может быть пустым или содержать только пробелы!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                return false;
             }
+            return true;
         }
 
         /// <summary>
@@ -311,7 +303,7 @@ namespace Accounting
         /// <param name="attrOne"></param>
         /// <param name="attrTwo"></param>
         /// <param name="nav"></param>
-        public static void AddOrEdit(string attrOne, string attrTwo, NavigationService nav)
+        public static bool AddOrEdit(string attrOne, string attrTwo, NavigationService nav)
         {
             if (!string.IsNullOrWhiteSpace(attrOne) && !string.IsNullOrWhiteSpace(attrTwo))
             {
@@ -325,45 +317,58 @@ namespace Accounting
                         {
                             if (Table.StartsWith("add"))
                             {
-                                if (Table.EndsWith("Types")) command.CommandText = "AddType";
+                                if (Table.EndsWith("Types"))
+                                {
+                                    command.CommandText = "AddType";
+                                    command.Parameters.AddWithValue("@kind", attrTwo);
+                                }
+                                if (Table.EndsWith("Models"))
+                                {
+                                    command.CommandText = "AddModel";
+                                    command.Parameters.AddWithValue("@brand", attrTwo);
+                                }
                             }
-                            else if (Table.StartsWith("edit"))
+                            if (Table.StartsWith("edit"))
                             {
-                                if (Table.EndsWith("Types")) command.CommandText = "EditType";
+                                if (Table.EndsWith("Types"))
+                                {
+                                    command.CommandText = "EditType";
+                                    command.Parameters.AddWithValue("@kind", attrTwo);
+                                }
+                                if (Table.EndsWith("Models"))
+                                {
+                                    command.CommandText = "EditModel";
+                                    command.Parameters.AddWithValue("@brand", attrTwo);
+                                }
                                 command.Parameters.AddWithValue("@id", Id);
                             }
 
                             command.CommandType = CommandType.StoredProcedure;
                             command.Parameters.AddWithValue("@name", attrOne);
-                            command.Parameters.AddWithValue("@kind", attrTwo);
 
                             if (command.ExecuteNonQuery() == -1)
                             {
                                 MessageBox.Show("Введенная запись уже существует!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                                return;
-                            }
-                            if (Table.StartsWith("add") && command.ExecuteNonQuery() != -1)
-                            {
-                                MessageBox.Show($"Запись {attrOne} | {attrTwo} успешно добавлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                            }
-                            if (Table.StartsWith("edit") && command.ExecuteNonQuery() != -1)
-                            {
-                                MessageBox.Show($"Запись №{Id} успешно изменена на {attrOne} | {attrTwo}!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                                return false;
                             }
                         }
 
-                        Table = Table.Replace("add", "");
-                        Table = Table.Replace("edit", "");
-
-                        nav.Navigate(new Uri($@"Pages\{Table}.xaml", UriKind.RelativeOrAbsolute));
+                        if (Table.EndsWith("Types")) nav.Navigate(new Uri($@"Pages\Types.xaml", UriKind.RelativeOrAbsolute));
+                        if (Table.EndsWith("Models")) nav.Navigate(new Uri($@"Pages\Models.xaml", UriKind.RelativeOrAbsolute));
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                        return;
+                        return false;
                     }
                 }
             }
+            else
+            {
+                MessageBox.Show("Название не может быть пустым или содержать только пробелы!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            return true;
         }
 
         /// <summary>
@@ -373,9 +378,79 @@ namespace Accounting
         /// <param name="attrTwo"></param>
         /// <param name="attrThree"></param>
         /// <param name=""></param>
-        public static void AddOrEdit(string attrOne, string attrTwo, string attrThree, NavigationService nav)
+        public static bool AddOrEdit(string attrOne, string attrTwo, string attrThree, NavigationService nav)
         {
+            if (!string.IsNullOrWhiteSpace(attrOne) && !string.IsNullOrWhiteSpace(attrTwo) && !string.IsNullOrWhiteSpace(attrThree))
+            {
+                using (SqlConnection connection = new SqlConnection(Conn))
+                {
+                    try
+                    {
+                        connection.Open();
 
+                        using (SqlCommand command = connection.CreateCommand())
+                        {
+                            if (Table.StartsWith("add"))
+                            {
+                                if (Table.EndsWith("Versions"))
+                                {
+                                    command.CommandText = "AddVersion";
+                                    command.Parameters.AddWithValue("@computer_id", attrOne);
+                                    command.Parameters.AddWithValue("@software", attrTwo);
+                                    command.Parameters.AddWithValue("@value", attrThree);
+                                }
+                                if (Table.EndsWith("Processors"))
+                                {
+                                    command.CommandText = "AddProcessor";
+                                    command.Parameters.AddWithValue("@model", attrOne);
+                                    command.Parameters.AddWithValue("@cores", attrTwo);
+                                    command.Parameters.AddWithValue("@frequency", attrThree);
+                                }
+                            }
+                            if (Table.StartsWith("edit"))
+                            {
+                                if (Table.EndsWith("Versions"))
+                                {
+                                    command.CommandText = "EditVersion";
+                                    command.Parameters.AddWithValue("@computer_id", attrOne);
+                                    command.Parameters.AddWithValue("@software", attrTwo);
+                                    command.Parameters.AddWithValue("@value", attrThree);
+                                }
+                                if (Table.EndsWith("Processors"))
+                                {
+                                    command.CommandText = "EditProcessor";
+                                    command.Parameters.AddWithValue("@model", attrOne);
+                                    command.Parameters.AddWithValue("@cores", attrTwo);
+                                    command.Parameters.AddWithValue("@frequency", attrThree);
+                                }
+                                command.Parameters.AddWithValue("@id", Id);
+                            }
+
+                            command.CommandType = CommandType.StoredProcedure;
+
+                            if (command.ExecuteNonQuery() == -1)
+                            {
+                                MessageBox.Show("Введенная запись уже существует!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                                return false;
+                            }
+                        }
+
+                        if (Table.EndsWith("Versions")) nav.Navigate(new Uri($@"Pages\Versions.xaml", UriKind.RelativeOrAbsolute));
+                        if (Table.EndsWith("Processors")) nav.Navigate(new Uri($@"Pages\Processors.xaml", UriKind.RelativeOrAbsolute));
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Название не может быть пустым или содержать только пробелы!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            return true;
         }
 
        /// <summary>
@@ -393,16 +468,16 @@ namespace Accounting
                    using (SqlCommand command = connection.CreateCommand())
                    {
                         if (Table.EndsWith("Brands")) command.CommandText = "SELECT * FROM Brands";
-                        else if (Table.EndsWith("Cabinets")) command.CommandText = "SELECT * FROM Cabinets";
-                        else if (Table.EndsWith("Computers")) command.CommandText = "SELECT * FROM ComputersView";
-                        else if (Table.EndsWith("Computers_Actions")) command.CommandText = "SELECT * FROM Computers_ActionsView";
-                        else if (Table.EndsWith("Models")) command.CommandText = "SELECT * FROM ModelsView";
-                        else if (Table.EndsWith("Periphery")) command.CommandText = "SELECT * FROM PeripheryView";
-                        else if (Table.EndsWith("Periphery_Actions")) command.CommandText = "SELECT * FROM Periphery_ActionsView";
-                        else if (Table.EndsWith("Processors")) command.CommandText = "SELECT * FROM ProcessorsView";
-                        else if (Table.EndsWith("Software")) command.CommandText = "SELECT * FROM Software";
-                        else if (Table.EndsWith("Types")) command.CommandText = "SELECT * FROM Types";
-                        else if (Table.EndsWith("Versions")) command.CommandText = "SELECT * FROM VersionsView";
+                        if (Table.EndsWith("Cabinets")) command.CommandText = "SELECT * FROM Cabinets";
+                        if (Table.EndsWith("Computers")) command.CommandText = "SELECT * FROM ComputersView";
+                        if (Table.EndsWith("Computers_Actions")) command.CommandText = "SELECT * FROM Computers_ActionsView";
+                        if (Table.EndsWith("Models")) command.CommandText = "SELECT * FROM ModelsView";
+                        if (Table.EndsWith("Periphery")) command.CommandText = "SELECT * FROM PeripheryView";
+                        if (Table.EndsWith("Periphery_Actions")) command.CommandText = "SELECT * FROM Periphery_ActionsView";
+                        if (Table.EndsWith("Processors")) command.CommandText = "SELECT * FROM ProcessorsView";
+                        if (Table.EndsWith("Software")) command.CommandText = "SELECT * FROM Software";
+                        if (Table.EndsWith("Types")) command.CommandText = "SELECT * FROM Types";
+                        if (Table.EndsWith("Versions")) command.CommandText = "SELECT * FROM VersionsView";
 
                         using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                         {

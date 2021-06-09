@@ -189,7 +189,7 @@
             <Setter Property="CanUserAddRows" Value="False"/>
             <Setter Property="CanUserDeleteRows" Value="False"/>
             <Setter Property="FontFamily" Value="Times New Roman"/>
-            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontSize" Value="14"/>
             <Setter Property="HeadersVisibility" Value="Column"/>
             <Setter Property="HorizontalGridLinesBrush" Value="SlateBlue"/>
             <Setter Property="SelectionMode" Value="Single"/>
@@ -201,7 +201,7 @@
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Background" Value="SlateBlue"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontSize" Value="14"/>
         </Style>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -457,7 +457,7 @@
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
             <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="Padding" Value="3"/>
+            <Setter Property="Padding" Value="3,0,3,0"/>
             <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
             <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
             <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>

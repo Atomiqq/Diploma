@@ -17,11 +17,11 @@ using System.Windows.Shapes;
 namespace Accounting.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AttrThree.xaml
+    /// Логика взаимодействия для AttrThreeAnother.xaml
     /// </summary>
-    public partial class AttrThree : Page
+    public partial class AttrThreeAnother : Page
     {
-        public AttrThree()
+        public AttrThreeAnother()
         {
             InitializeComponent();
 
@@ -31,25 +31,14 @@ namespace Accounting.Pages
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("SELECT * FROM Computers", connection))
+                    using (SqlCommand command = new SqlCommand("SELECT * FROM ModelsView", connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.HasRows)
                                 while (reader.Read())
                                 {
-                                    attrOne.Items.Add(reader[0]);
-                                }
-                        }
-                    }
-                    using (SqlCommand command = new SqlCommand("SELECT * FROM Software", connection))
-                    {
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                                while (reader.Read())
-                                {
-                                    attrTwo.Items.Add(reader[1]);
+                                    attrOne.Items.Add(reader[1] + " | " + reader[3]);
                                 }
                         }
                     }
@@ -71,7 +60,7 @@ namespace Accounting.Pages
                     {
                         connection.Open();
 
-                        using (SqlCommand command = new SqlCommand("SELECT * FROM VersionsView WHERE Id = @id", connection))
+                        using (SqlCommand command = new SqlCommand("SELECT * FROM ProcessorsView WHERE Id = @id", connection))
                         {
                             command.Parameters.AddWithValue("@id", App.Id);
 
@@ -81,9 +70,9 @@ namespace Accounting.Pages
                                 {
                                     while (reader.Read())
                                     {
-                                        attrOne.Text = reader[2].ToString();
-                                        attrTwo.Text = reader[4].ToString();
-                                        attrThree.Text = reader[1].ToString();
+                                        attrOne.Text = reader[5].ToString() + " | " + reader[6].ToString();
+                                        attrTwo.Text = reader[1].ToString();
+                                        attrThree.Text = reader[2].ToString();
                                     }
                                 }
                             }
@@ -100,7 +89,17 @@ namespace Accounting.Pages
 
         private void addOrEdit_Click(object sender, RoutedEventArgs e)
         {
-            bool ok = App.AddOrEdit(attrOne.Text, attrTwo.Text, attrThree.Text, NavigationService);
+            bool ok = false;
+
+            if (attrTwo.Text.Any(char.IsDigit) && Convert.ToInt32(attrTwo.Text) >= 1 && Convert.ToInt32(attrTwo.Text) <= 100 && attrThree.Text.Any(char.IsDigit) && Convert.ToInt32(attrThree.Text) >= 1 && Convert.ToInt32(attrThree.Text) < 10000)
+            {
+                ok = App.AddOrEdit(attrOne.Text.Substring(attrOne.Text.IndexOf('|') + 2), attrTwo.Text, attrThree.Text, NavigationService);
+            }
+            else
+            {
+                MessageBox.Show("Количество ядер и частота на ядро должны быть числовыми данными больше 1 и меньше 100 для количества ядер и 10000 для частоты на ядро!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
 
             if (ok == true && App.Table.StartsWith("add"))
             {

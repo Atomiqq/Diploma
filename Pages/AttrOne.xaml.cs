@@ -78,7 +78,16 @@ namespace Accounting.Pages
 
         private void addOrEdit_Click(object sender, RoutedEventArgs e)
         {
-            App.AddOrEdit(attrOne.Text, NavigationService);
+            bool ok = App.AddOrEdit(attrOne.Text, NavigationService);
+
+            if (ok == true && App.Table.StartsWith("add"))
+            {
+                MessageBox.Show($"Запись {attrOne.Text} успешно добавлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            if (ok == true && App.Table.StartsWith("edit"))
+            {
+                MessageBox.Show($"Запись №{App.Id} успешно изменена на {attrOne.Text}!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }

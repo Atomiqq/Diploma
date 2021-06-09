@@ -29,8 +29,8 @@
         <DataGrid x:Name="dg" Grid.Row="1" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Марка процессора" Binding="{Binding Processor_Name}"/>
-                <DataGridTextColumn Header="Марка монитора" Binding="{Binding Monitor_Name}"/>
+                <DataGridTextColumn Header="Процессор" Binding="{Binding Processor_Name}"/>
+                <DataGridTextColumn Header="Монитор" Binding="{Binding Monitor_Name}"/>
                 <DataGridTextColumn Header="Оперативная память" Binding="{Binding RAM}"/>
                 <DataGridTextColumn Header="Физическая память" Binding="{Binding ROM}"/>
                 <DataGridTextColumn Header="Работоспособность" Binding="{Binding Is_Working}"/>

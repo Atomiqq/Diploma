@@ -62,8 +62,11 @@
     <Compile Include="Pages\AttrThree.xaml.cs">
       <DependentUpon>AttrThree.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AttrTwoWithCb.xaml.cs">
-      <DependentUpon>AttrTwoWithCb.xaml</DependentUpon>
+    <Compile Include="Pages\AttrThreeAnother.xaml.cs">
+      <DependentUpon>AttrThreeAnother.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AttrTwo.xaml.cs">
+      <DependentUpon>AttrTwo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Brands.xaml.cs">
       <DependentUpon>Brands.xaml</DependentUpon>
@@ -126,7 +129,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\AttrTwoWithCb.xaml">
+    <Page Include="Pages\AttrThreeAnother.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AttrTwo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
