@@ -53,6 +53,7 @@ namespace Accounting.Pages
         /// <param name="e"></param>
         private void computers_Click(object sender, RoutedEventArgs e)
         {
+            lbl.Visibility = Visibility.Hidden;
             dataFrame.Navigate(new Uri(@"Pages\Computers.xaml", UriKind.RelativeOrAbsolute));
         }
 
@@ -63,6 +64,7 @@ namespace Accounting.Pages
         /// <param name="e"></param>
         private void periphery_Click(object sender, RoutedEventArgs e)
         {
+            lbl.Visibility = Visibility.Hidden;
             dataFrame.Navigate(new Uri(@"Pages\Periphery.xaml", UriKind.RelativeOrAbsolute));
         }
 
@@ -73,6 +75,7 @@ namespace Accounting.Pages
         /// <param name="e"></param>
         private void processors_Click(object sender, RoutedEventArgs e)
         {
+            lbl.Visibility = Visibility.Hidden;
             dataFrame.Navigate(new Uri(@"Pages\Processors.xaml", UriKind.RelativeOrAbsolute));
         }
 
@@ -83,6 +86,7 @@ namespace Accounting.Pages
         /// <param name="e"></param>
         private void cabinets_Click(object sender, RoutedEventArgs e)
         {
+            lbl.Visibility = Visibility.Hidden;
             dataFrame.Navigate(new Uri(@"Pages\Cabinets.xaml", UriKind.RelativeOrAbsolute));
         }
 
@@ -93,6 +97,7 @@ namespace Accounting.Pages
         /// <param name="e"></param>
         private void brands_Click(object sender, RoutedEventArgs e)
         {
+            lbl.Visibility = Visibility.Hidden;
             dataFrame.Navigate(new Uri(@"Pages\Brands.xaml", UriKind.RelativeOrAbsolute));
         }
 
@@ -103,6 +108,7 @@ namespace Accounting.Pages
         /// <param name="e"></param>
         private void models_Click(object sender, RoutedEventArgs e)
         {
+            lbl.Visibility = Visibility.Hidden;
             dataFrame.Navigate(new Uri(@"Pages\Models.xaml", UriKind.RelativeOrAbsolute));
         }
 
@@ -113,6 +119,7 @@ namespace Accounting.Pages
         /// <param name="e"></param>
         private void computersActions_Click(object sender, RoutedEventArgs e)
         {
+            lbl.Visibility = Visibility.Hidden;
             dataFrame.Navigate(new Uri(@"Pages\Computers_Actions.xaml", UriKind.RelativeOrAbsolute));
         }
 
@@ -123,6 +130,7 @@ namespace Accounting.Pages
         /// <param name="e"></param>
         private void peripheryActions_Click(object sender, RoutedEventArgs e)
         {
+            lbl.Visibility = Visibility.Hidden;
             dataFrame.Navigate(new Uri(@"Pages\Periphery_Actions.xaml", UriKind.RelativeOrAbsolute));
         }
 
@@ -133,6 +141,7 @@ namespace Accounting.Pages
         /// <param name="e"></param>
         private void types_Click(object sender, RoutedEventArgs e)
         {
+            lbl.Visibility = Visibility.Hidden;
             dataFrame.Navigate(new Uri(@"Pages\Types.xaml", UriKind.RelativeOrAbsolute));
         }
 
@@ -143,6 +152,7 @@ namespace Accounting.Pages
         /// <param name="e"></param>
         private void software_Click(object sender, RoutedEventArgs e)
         {
+            lbl.Visibility = Visibility.Hidden;
             dataFrame.Navigate(new Uri(@"Pages\Software.xaml", UriKind.RelativeOrAbsolute));
         }
 
@@ -153,6 +163,7 @@ namespace Accounting.Pages
         /// <param name="e"></param>
         private void versions_Click(object sender, RoutedEventArgs e)
         {
+            lbl.Visibility = Visibility.Hidden;
             dataFrame.Navigate(new Uri(@"Pages\Versions.xaml", UriKind.RelativeOrAbsolute));
         }
     }

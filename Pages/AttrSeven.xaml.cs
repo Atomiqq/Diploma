@@ -96,10 +96,10 @@ namespace Accounting.Pages
                                         attrOne.Text = reader[0].ToString();
                                         if (!attrTwo.Items.Contains(reader[1].ToString())) attrTwo.Items.Add(reader[1].ToString());
                                         attrTwo.SelectedItem = reader[1].ToString();
-                                        attrThree.Text = reader[14].ToString() + " | " + reader[15].ToString();
-                                        attrFour.Text = reader[9].ToString();
-                                        attrFive.Text = reader[10].ToString();
-                                        if (reader[11].ToString() == "Рабочий") attrSix.SelectedIndex = 0;
+                                        attrThree.Text = reader[11].ToString() + " | " + reader[12].ToString();
+                                        attrFour.Text = reader[7].ToString();
+                                        attrFive.Text = reader[8].ToString();
+                                        if (reader[9].ToString() == "Рабочий") attrSix.SelectedIndex = 0;
                                         else attrSix.SelectedIndex = 1;
                                     }
                                 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Accounting.Windows"
         mc:Ignorable="d"
-        Title="PwChange" Height="250" Width="450" ResizeMode="NoResize">
+        Title="Изменение пароля" Height="250" Width="450" ResizeMode="NoResize">
     <Grid x:Name="pwChGrid" Style="{StaticResource mainGrid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30"/>
