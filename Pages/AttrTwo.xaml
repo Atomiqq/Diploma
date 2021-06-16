@@ -27,7 +27,7 @@
         <Label Content="Название:" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15,10,0,0"/>
         <Label x:Name="lbl" Content="Тип:" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15,35,0,0"/>
 
-        <TextBox x:Name="attrOne" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="105,15,20,0"/>
+        <TextBox x:Name="attrOne" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="105,15,20,0" MaxLength="20"/>
         <ComboBox x:Name="attrTwo" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="105,40,20,0"/>
 
         <Button x:Name="addOrEdit" Content="Добавить" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Margin="10,0,10,10" Click="addOrEdit_Click"/>

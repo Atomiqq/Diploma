@@ -29,8 +29,8 @@
         <Label Content="Частота на ядро:" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15,60,0,0"/>
 
         <ComboBox x:Name="attrOne" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="165,15,20,0"/>
-        <TextBox x:Name="attrTwo" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="165,40,20,0"/>
-        <TextBox x:Name="attrThree" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="165,65,20,0"/>
+        <TextBox x:Name="attrTwo" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="165,40,20,0" MaxLength="3"/>
+        <TextBox x:Name="attrThree" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="165,65,20,0" MaxLength="5"/>
 
         <Button x:Name="addOrEdit" Content="Добавить" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Margin="10,0,10,10" Click="addOrEdit_Click"/>
         <Button x:Name="refresh" Content="↻" Width="35" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,45" Click="refresh_Click"/>

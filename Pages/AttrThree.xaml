@@ -30,7 +30,7 @@
 
         <ComboBox x:Name="attrOne" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="125,15,20,0"/>
         <ComboBox x:Name="attrTwo" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="125,40,20,0"/>
-        <TextBox x:Name="attrThree" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="125,65,20,0"/>
+        <TextBox x:Name="attrThree" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="125,65,20,0" MaxLength="20"/>
 
         <Button x:Name="addOrEdit" Content="Добавить" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Margin="10,0,10,10" Click="addOrEdit_Click"/>
         <Button x:Name="refresh" Content="↻" Width="35" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,45" Click="refresh_Click"/>

@@ -132,18 +132,18 @@ namespace Accounting.Pages
             }
             else
             {
-                MessageBox.Show("Оперативная и физическая память должны быть числовыми данными больше или равно 0 и меньше 100 для оперативной памяти и 10000 для физической памяти!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Оперативная и физическая память должны быть числовыми данными больше или равно 0 и меньше 100 для оперативной памяти и 10000 для физической памяти!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             
 
             if (ok == true && App.Table.StartsWith("add"))
             {
-                MessageBox.Show($"Запись {attrOne.Text} | {attrTwo.Text} | {attrThree.Text} | {attrFour.Text} | {attrFive.Text} успешно добавлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show($"Запись {attrOne.Text} | {attrTwo.Text} | {attrThree.Text} | {attrFour.Text} | {attrFive.Text} | {attrSix.Text} | {attrSeven.Text} успешно добавлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             if (ok == true && App.Table.StartsWith("edit"))
             {
-                MessageBox.Show($"Запись №{App.Id} успешно изменена на {attrOne.Text} | {attrTwo.Text} | {attrThree.Text} | {attrFour.Text} | {attrFive.Text}!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show($"Запись №{App.Id} успешно изменена на {attrOne.Text} | {attrTwo.Text} | {attrThree.Text} | {attrFour.Text} | {attrFive.Text} | {attrSix.Text} | {attrSeven.Text}!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

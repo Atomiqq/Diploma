@@ -26,7 +26,7 @@
 
         <Label Content="Название:" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15,10,0,0"/>
 
-        <TextBox x:Name="attrOne" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="105,15,20,0"/>
+        <TextBox x:Name="attrOne" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="105,15,20,0" MaxLength="30"/>
 
         <Button x:Name="addOrEdit" Content="Добавить" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Margin="10,0,10,10" Click="addOrEdit_Click"/>
         <Button x:Name="refresh" Content="↻" Width="35" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,45" Click="refresh_Click"/>

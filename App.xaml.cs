@@ -244,7 +244,7 @@ namespace Accounting
         /// <param name="nav"></param>
         public static bool AddOrEdit(string attr, NavigationService nav)
         {
-            if (!string.IsNullOrWhiteSpace(attr))
+            if (!string.IsNullOrWhiteSpace(attr) && attr.Length <= 30)
             {
                 using (SqlConnection connection = new SqlConnection(Conn))
                 {
@@ -291,7 +291,7 @@ namespace Accounting
             }
             else
             {
-                MessageBox.Show("Название не может быть пустым или содержать только пробелы!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Название не может быть пустым, содержать только пробелы и быть в длину больше 30 символов!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             return true;
@@ -305,7 +305,7 @@ namespace Accounting
         /// <param name="nav"></param>
         public static bool AddOrEdit(string attrOne, string attrTwo, NavigationService nav)
         {
-            if (!string.IsNullOrWhiteSpace(attrOne) && !string.IsNullOrWhiteSpace(attrTwo))
+            if (!string.IsNullOrWhiteSpace(attrOne) && !string.IsNullOrWhiteSpace(attrTwo) && attrOne.Length <= 20)
             {
                 using (SqlConnection connection = new SqlConnection(Conn))
                 {
@@ -365,7 +365,7 @@ namespace Accounting
             }
             else
             {
-                MessageBox.Show("Название не может быть пустым или содержать только пробелы!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Название не может быть пустым, содержать только пробелы и быть в длину больше 20 символов!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             return true;
@@ -447,7 +447,7 @@ namespace Accounting
             }
             else
             {
-                MessageBox.Show("Название не может быть пустым или содержать только пробелы!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Строки не могут быть пустыми или содержать только пробелы!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             return true;
@@ -554,7 +554,7 @@ namespace Accounting
             }
             else
             {
-                MessageBox.Show("Название не может быть пустым или содержать только пробелы!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Строки не могут быть пустыми или содержать только пробелы!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             return true;

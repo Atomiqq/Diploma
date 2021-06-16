@@ -35,7 +35,7 @@
         <TextBox x:Name="attrOne" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="195,15,20,0" MaxLength="10"/>
         <ComboBox x:Name="attrTwo" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="195,40,20,0" SelectionChanged="attrTwo_SelectionChanged"/>
         <ComboBox x:Name="attrThree" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="195,65,20,0"/>
-        <TextBox x:Name="attrFour" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="195,90,20,0" MaxLength="5"/>
+        <TextBox x:Name="attrFour" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="195,90,20,0" MaxLength="3"/>
         <TextBox x:Name="attrFive" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="195,115,20,0" MaxLength="5"/>
         <ComboBox x:Name="attrSix" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="195,140,20,0"/>
         <ComboBox x:Name="attrSeven" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="195,165,20,0"/>
