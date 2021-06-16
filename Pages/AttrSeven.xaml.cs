@@ -121,14 +121,25 @@ namespace Accounting.Pages
             Regex regex = new Regex("[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]");
 
             bool ok;
+            float res1;
+            float res2;
 
-            if (attrFour.Text.Any(char.IsDigit) && Convert.ToDouble(attrFour.Text) >= 0 && Convert.ToDouble(attrFour.Text) <= 100 && attrFive.Text.Any(char.IsDigit) && Convert.ToDouble(attrFive.Text) >= 0 && Convert.ToDouble(attrFive.Text) < 10000)
+            if (attrFour.Text.Contains(".") || attrFive.Text.Contains("."))
+            {
+                attrFour.Text = attrFour.Text.Replace(".", ",");
+                attrFive.Text = attrFive.Text.Replace(".", ",");
+            }
+            if (!float.TryParse(attrFour.Text, out res1) == true || !float.TryParse(attrFive.Text, out res2) == true)
+            {
+                MessageBox.Show("Оперативная и физическая память должны быть числовыми данными с плавающей точкой больше или равно 0 и меньше 100 для оперативной памяти и 10000 для физической памяти!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (res1 >= 0.0 && res1 <= 100.0 && res2 >= 0.0 && res2 < 10000.0)
             {
                 if (regex.IsMatch(attrOne.Text) == true)
                 {
                     if (attrThree.Text.Contains('|')) ok = App.AddOrEdit(attrOne.Text, attrTwo.Text, attrThree.Text.Substring(attrThree.Text.IndexOf('|') + 2), attrFour.Text, attrFive.Text, attrSix.Text, attrSeven.Text, NavigationService);
                     else ok = App.AddOrEdit(attrOne.Text, attrTwo.Text, attrThree.Text, attrFour.Text, attrFive.Text, attrSix.Text, attrSeven.Text, NavigationService);
-                    
                 }
                 else
                 {
@@ -138,7 +149,7 @@ namespace Accounting.Pages
             }
             else
             {
-                MessageBox.Show("Оперативная и физическая память должны быть числовыми данными больше или равно 0 и меньше 100 для оперативной памяти и 10000 для физической памяти!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Оперативная и физическая память должны быть числовыми данными с плавающей точкой больше или равно 0 и меньше 100 для оперативной памяти и 10000 для физической памяти!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             
