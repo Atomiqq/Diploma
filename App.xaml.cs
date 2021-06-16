@@ -592,8 +592,8 @@ namespace Accounting
                                     command.Parameters.AddWithValue("@id", attrOne);
                                     command.Parameters.AddWithValue("@monitor_id", attrTwo);
                                     command.Parameters.AddWithValue("@processor", attrThree);
-                                    command.Parameters.AddWithValue("@ram", attrFour);
-                                    command.Parameters.AddWithValue("@rom", attrFive);
+                                    command.Parameters.AddWithValue("@ram", float.Parse(attrFour));
+                                    command.Parameters.AddWithValue("@rom", float.Parse(attrFive));
                                     command.Parameters.AddWithValue("@is_working", attrSix);
                                     command.Parameters.AddWithValue("@cabinet", attrSeven);
                                 }
@@ -606,8 +606,8 @@ namespace Accounting
                                     command.Parameters.AddWithValue("@newId", attrOne);
                                     command.Parameters.AddWithValue("@monitor_id", attrTwo);
                                     command.Parameters.AddWithValue("@processor", attrThree);
-                                    command.Parameters.AddWithValue("@ram", attrFour);
-                                    command.Parameters.AddWithValue("@rom", attrFive);
+                                    command.Parameters.AddWithValue("@ram", float.Parse(attrFour));
+                                    command.Parameters.AddWithValue("@rom", float.Parse(attrFive));
                                     command.Parameters.AddWithValue("@is_working", attrSix);
                                     command.Parameters.AddWithValue("@cabinet", attrSeven);
                                 }
