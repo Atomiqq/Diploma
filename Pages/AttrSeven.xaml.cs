@@ -101,6 +101,7 @@ namespace Accounting.Pages
                                         attrFive.Text = reader[8].ToString();
                                         if (reader[9].ToString() == "Рабочий") attrSix.SelectedIndex = 0;
                                         else attrSix.SelectedIndex = 1;
+                                        attrSeven.SelectedItem = reader[3].ToString();
                                     }
                                 }
                             }
@@ -121,9 +122,14 @@ namespace Accounting.Pages
 
             bool ok;
 
-            if (attrFour.Text.Any(char.IsDigit) && Convert.ToInt32(attrFour.Text) >= 0 && Convert.ToInt32(attrFour.Text) <= 100 && attrFive.Text.Any(char.IsDigit) && Convert.ToInt32(attrFive.Text) >= 0 && Convert.ToInt32(attrFive.Text) < 10000)
+            if (attrFour.Text.Any(char.IsDigit) && Convert.ToDouble(attrFour.Text) >= 0 && Convert.ToDouble(attrFour.Text) <= 100 && attrFive.Text.Any(char.IsDigit) && Convert.ToDouble(attrFive.Text) >= 0 && Convert.ToDouble(attrFive.Text) < 10000)
             {
-                if (regex.IsMatch(attrOne.Text) == true) ok = App.AddOrEdit(attrOne.Text, attrTwo.Text, attrThree.Text.Substring(attrThree.Text.IndexOf('|') + 2), attrFour.Text, attrFive.Text, attrSix.Text, attrSeven.Text, NavigationService);
+                if (regex.IsMatch(attrOne.Text) == true)
+                {
+                    if (attrThree.Text.Contains('|')) ok = App.AddOrEdit(attrOne.Text, attrTwo.Text, attrThree.Text.Substring(attrThree.Text.IndexOf('|') + 2), attrFour.Text, attrFive.Text, attrSix.Text, attrSeven.Text, NavigationService);
+                    else ok = App.AddOrEdit(attrOne.Text, attrTwo.Text, attrThree.Text, attrFour.Text, attrFive.Text, attrSix.Text, attrSeven.Text, NavigationService);
+                    
+                }
                 else
                 {
                     MessageBox.Show("Введенный код оргтехники не соответствует шаблону! (Пример: 1234567890 (10 цифр подряд))", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -193,7 +199,6 @@ namespace Accounting.Pages
             }
             else
             {
-                attrSeven.SelectedIndex = -1;
                 attrSeven.IsEnabled = true;
             }
         }
